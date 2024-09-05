@@ -1,44 +1,42 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// int main() {
+//     int N;
+//     int Ai;
+//     cin >> N;
+//     vector<int> vec;
+
+//     for (int i = 0; i < N; i++) {
+//         cin >> Ai;
+//         vec.push_back(Ai);
+//     }
+// }
+
+
 int main() {
-    int N, A;
-    cin >> N >> A;
-    vector<string> opvec;
-    vector<int> numvec;
-    string op;
-    int num;
+    int N;
+    int Ai;
+    cin >> N;
+    vector<int> vec;
 
-    int result = A;
+    int avg = 0;
 
+    // 入力を格納
     for (int i = 0; i < N; i++) {
-        cin >> op >> num;;
-        opvec.push_back(op);
-        numvec.push_back(num);
-        // cout << opvec[i] << numvec[i];
-        // cout << endl;
+        cin >> Ai;
+        vec.push_back(Ai);
     }
-
-    for (int i = 0; i < N; i++) {
-        if (opvec[i] == "+") {
-            result += numvec[i];
-            cout << i + 1 << ":" << result << endl;
-        }
-        else if (opvec[i] == "-") {
-            result -= numvec[i];
-            cout << i + 1 << ":" << result << endl;
-        }
-        else if (opvec[i] == "*") {
-            result *= numvec[i];
-            cout << i + 1 << ":" << result << endl;
-        }
-        else if (opvec[i] == "/" && numvec[i] != 0) {
-            result /= numvec[i];
-            cout << i + 1 << ":" << result << endl;
-        }
-        else {
-            cout << "error" << endl;
-            break;
-        }
+    //入力された内容をすべて足す
+    for(int i = 0; i < N; i++) {
+        avg += vec[i];
     }
+    //平均点
+    avg /= N;
+    //平均点からどれくらいさが離れているか
+    for(int i = 0; i < N; i++) {
+        cout << abs(avg - vec[i]) << endl;
+    }
+    
+    cout << endl;
 }
