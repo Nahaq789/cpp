@@ -1,48 +1,55 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// int main() {
-//     int N;
-//     int Ai;
-//     cin >> N;
-//     vector<int> vec;
-
-//     for (int i = 0; i < N; i++) {
-//         cin >> Ai;
-//         vec.push_back(Ai);
-//     }
-// }
-
-
-int main() {
-    int H;
-    int W;
-    string str;
-
+int main()
+{
     int N;
+    cin >> N;
+
+    string A;
     vector<string> vec;
-    cin >> H >> W;
+    vector<string> chars;
 
-    for(int i = 0; i < H; i++) {
-        cin >> str;
-        vec.push_back(str);   
+    int count = 0;
+
+    for (int i = 0; i < N; i++)
+    {
+        cin >> A;
+        vec.push_back(A);
     }
 
-    for(int i = 0; i < H + 1; i++) {
-        cout << "#";
-        for(int j = 0; j < W + 1; j++) {
-            if (i == 0) {
-                cout << "#";
-            } else {
-                cout << vec[j];
-                cout << "#";
-                break;
-            }
+    sort(vec.begin(), vec.end());
+
+    for (int i = 0; i < N; i++)
+    {
+        if (vec[i] == "G" && vec[i + 1] != "G")
+        {
+
+            count++;
+            continue;
         }
-        cout << endl;
+        if (vec[i] == "W" && vec[i + 1] != "W")
+        {
+
+            count++;
+            continue;
+        }
+        if (vec[i] == "P" && vec[i + 1] != "P")
+        {
+
+            count++;
+            continue;
+        }
+        if (vec[i] == "Y" && vec[i + 1] != "Y")
+        {
+
+            count++;
+            continue;
+        }
     }
-    for(int i = 0; i < W + 2; i++) {
-        cout << "#";
-    }
-    cout << endl;
+
+    if (count == 3)
+        cout << "Three";
+    if (count == 4)
+        cout << "Four";
 }
