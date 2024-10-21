@@ -1,13 +1,17 @@
+
 #include <bits/stdc++.h>
+#define rep(i, a, b) for (int i = a; i < b; i++)
 using namespace std;
 
+int N, A[101];
 int main()
 {
-    int A, B, C;
-    cin >> A >> B >> C;
+    cin >> N;
+    rep(i, 0, N) cin >> A[i];
+    sort(A, A + N, greater<int>());
 
-    int max1 = max(max(A, B), C);
-    int min1 = min(min(A, B), C);
-
-    cout << max1 - min1 << endl;
+    int v[2] = {0, 0};
+    rep(i, 0, N) v[i % 2] += A[i];
+    int ans = v[0] - v[1];
+    cout << ans << endl;
 }
